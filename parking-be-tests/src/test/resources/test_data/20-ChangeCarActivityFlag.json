@@ -1,0 +1,323 @@
+{
+  "url": "/car/active/{id}",
+  "method": "PATCH",
+  "Content-Type": "application/json",
+  "change_activity_state_flag_success": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "cars": {
+            "request_name": "car_registration",
+            "data": [
+              {
+                "body": {
+                  "brand": "Mercedes",
+                  "model": "Benz",
+                  "color": "black",
+                  "plateNumber": "LB 123B",
+                  "activeState": true
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "path_params": {},
+          "body": {
+            "activeState": false
+          }
+        },
+        "response": {
+          "code": 200,
+          "body":
+            {
+              "id": ".+",
+              "activeState": false
+            }
+          },
+        "description": "changing active state from true to false"
+      },
+      {
+        "item_configuration_requests": {
+          "cars": {
+            "request_name": "car_registration",
+            "data": [
+              {
+                "body": {
+                  "brand": "Mercedes",
+                  "model": "Benz",
+                  "color": "black",
+                  "plateNumber": "LB 123B",
+                  "activeState": false
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "path_params": {},
+          "body": {
+            "activeState": true
+          }
+        },
+        "response": {
+          "code": 200,
+          "body":
+          {
+            "id": ".+",
+            "activeState": true
+          }
+        },
+        "description": "changing active state from false to true"
+      }
+    ]
+  },
+  "change_activity_state_flag_not_success": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "cars": {
+            "request_name": "car_registration",
+            "data": [
+              {
+                "body": {
+                  "brand": "Mercedes",
+                  "model": "Benz",
+                  "color": "black",
+                  "plateNumber": "LB 123B",
+                  "activeState": true
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "path_params": {},
+          "body": {
+            "activeState": true
+          }
+        },
+        "response": {
+          "code": 200,
+          "body":
+          {
+            "id": ".+",
+            "activeState": true
+          }
+        },
+        "description": "changing active state from true to true"
+      },
+      {
+        "item_configuration_requests": {
+          "cars": {
+            "request_name": "car_registration",
+            "data": [
+              {
+                "body": {
+                  "brand": "Mercedes",
+                  "model": "Benz",
+                  "color": "black",
+                  "plateNumber": "LB 123B",
+                  "activeState": false
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "path_params": {},
+          "body": {
+            "activeState": false
+          }
+        },
+        "response": {
+          "code": 200,
+          "body":
+          {
+            "id": ".+",
+            "activeState": false
+          }
+        },
+        "description": "changing active state from false to false"
+      }
+    ]
+  },
+  "change_activity_state_flag_using_incorrect_active_state_values_failure": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "cars": {
+            "request_name": "car_registration",
+            "data": [
+              {
+                "body": {
+                  "brand": "Mercedes",
+                  "model": "Benz",
+                  "color": "black",
+                  "plateNumber": "LB 123B",
+                  "activeState": true
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "path_params": {},
+          "body": {
+            "activeState": "abc"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body":
+          {
+            "JSONSyntaxError":"Wrong JSON format."
+          }
+        },
+        "description": "changing active state using text value for active state"
+      },
+      {
+        "item_configuration_requests": {
+          "cars": {
+            "request_name": "car_registration",
+            "data": [
+              {
+                "body": {
+                  "brand": "Mercedes",
+                  "model": "Benz",
+                  "color": "black",
+                  "plateNumber": "LB 123B",
+                  "activeState": true
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "path_params": {},
+          "body": {
+            "activeState": 123
+          }
+        },
+        "response": {
+          "code": 400,
+          "body":
+          {
+            "JSONSyntaxError":"Wrong JSON format."
+          }
+        },
+        "description": "changing active state using numeric value for active state"
+      }
+    ]
+  },
+  "change_activity_state_flag_without_active_state_values_failure": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "cars": {
+            "request_name": "car_registration",
+            "data": [
+              {
+                "body": {
+                  "brand": "Mercedes",
+                  "model": "Benz",
+                  "color": "black",
+                  "plateNumber": "LB 123B",
+                  "activeState": true
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "path_params": {},
+          "body": {
+            "activeState": ""
+          }
+        },
+        "response": {
+          "code": 400,
+          "body":
+          {
+            "JSONSyntaxError":"Wrong JSON format."
+          }
+        },
+        "description": "changing active state using empty string for active state"
+      },
+      {
+        "item_configuration_requests": {
+          "cars": {
+            "request_name": "car_registration",
+            "data": [
+              {
+                "body": {
+                  "brand": "Mercedes",
+                  "model": "Benz",
+                  "color": "black",
+                  "plateNumber": "LB 123B",
+                  "activeState": true
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "path_params": {},
+          "body": {
+
+          }
+        },
+        "response": {
+          "code": 400,
+          "body":
+          {
+            "Wrong_parameters":"Active state parameter may not be null"
+          }
+        },
+        "description": "changing active state without active state"
+      }
+    ]
+  },
+  "change_activity_state_flag_using_incorrect_car_value_failure": {
+    "data": [
+      {
+
+        "request": {
+          "path_params": {"id": "qwerty"},
+          "body": {
+            "activeState": true
+          }
+        },
+        "response": {
+          "code": 400,
+          "body":
+          {
+            "Wrong_parameters":"This car doesn't exist."
+          }
+        },
+        "description": "changing active state using empty string for active state"
+      }
+    ]
+  },
+  "change_activity_state_flag_without_providing_car_value_failure": {
+    "data": [
+      {
+
+        "request": {
+          "path_params": {"id": ""},
+          "body": {
+            "activeState": true
+          }
+        },
+        "response": {
+          "code": 400,
+          "body":
+          {
+            "error": "error"
+          }
+        },
+        "description": "changing active state using empty string for active state"
+      }
+    ]
+  }
+}

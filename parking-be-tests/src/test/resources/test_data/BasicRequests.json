@@ -1,0 +1,42 @@
+{
+  "user_registration": {
+    "url": "/register/",
+    "method": "POST",
+    "Content-Type": "application/json"
+  },
+  "car_registration": {
+    "url": "/car/add/",
+    "method": "POST",
+    "Content-Type": "application/json"
+  },
+  "parking_place_registration": {
+    "url": "/parking/place/",
+    "method": "POST",
+    "Content-Type": "application/json"
+  },
+  "parking_configuration": {
+    "url": "/parking/",
+    "method": "POST",
+    "Content-Type": "application/json"
+  },
+  "mark_parking_slots_for_booking": {
+    "url": "/reservation/available",
+    "method": "POST",
+    "Content-Type": "application/json"
+  },
+  "list_user_cars": {
+    "url": "/car/list/",
+    "method": "GET",
+    "Content-Type": "application/json"
+  },
+  "booking_parking_place": {
+    "url": "/reservation/",
+    "method": "POST",
+    "Content-Type": "application/json"
+  },
+  "change_car_activity_flag": {
+    "url": "/car/active/{id}",
+    "method": "PATCH",
+    "Content-Type": "application/json"
+  }
+}

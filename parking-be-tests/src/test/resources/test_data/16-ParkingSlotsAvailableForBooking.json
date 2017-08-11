@@ -1,0 +1,1614 @@
+{
+  "url": "/reservation/available",
+  "method": "POST",
+  "Content-Type": "application/json",
+  "mark_parking_slots_available_for_booking_success": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {"start": "1d", "end": "2d"}
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "3",
+                  "level": "II"
+                }
+              },
+              {
+                "body": {
+                  "number": "4",
+                  "level": "II"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {"parkingPlaceId": ".+"},
+            {"parkingPlaceId": ".+"},
+            {"parkingPlaceId": ".+"},
+            {"parkingPlaceId": ".+"}
+          ]
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "success": "Empty reservations for existing parking places succesfully added"
+          }
+        },
+        "description": "marking all places as available"
+      },
+      {
+
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {"start": "1d", "end": "7d"}
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "3",
+                  "level": "II"
+                }
+              },
+              {
+                "body": {
+                  "number": "4",
+                  "level": "II"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {"parkingPlaceId": ".+"},
+            {"parkingPlaceId": ".+"}
+          ]
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "success": "Empty reservations for existing parking places succesfully added"
+          }
+        },
+        "description": "marking some (2 of 4) places as available"
+
+      }
+    ]
+  },
+  "mark_parking_slots_available_for_booking_for_past_dates_failure": {
+   "data": [
+     {
+       "item_configuration_requests": {
+         "dates": {
+           "data": [
+             {
+               "start": "-3d",
+               "end": "-1d"
+             }
+           ]
+         },
+         "parking": {
+           "request_name": "parking_configuration",
+           "data": [
+             {
+               "body": {
+                 "name": "Lublin main office",
+                 "capacity": 100
+               }
+             }
+           ]
+         },
+         "parking_places": {
+           "request_name": "parking_place_registration",
+           "data": [
+             {
+               "body": {
+                 "number": "1",
+                 "level": "I"
+               }
+             },
+             {
+               "body": {
+                 "number": "2",
+                 "level": "I"
+               }
+             }
+           ]
+         }
+       },
+       "request": {
+         "query_params": {},
+         "body": [
+           {
+             "parkingPlaceId": ".+"
+           },
+           {
+             "parkingPlaceId": ".+"
+           }
+         ]
+       },
+       "response": {
+         "code": 400,
+         "body": {
+           "Wrong_parameters":"Date may not be null or in past"
+         }
+       },
+       "description": "marking for past dates"
+     },
+     {
+       "item_configuration_requests": {
+         "dates": {
+           "data": [
+             {
+               "start": "-2d",
+               "end": "4d"
+             }
+           ]
+         },
+         "parking": {
+           "request_name": "parking_configuration",
+           "data": [
+             {
+               "body": {
+                 "name": "Lublin main office",
+                 "capacity": 100
+               }
+             }
+           ]
+         },
+         "parking_places": {
+           "request_name": "parking_place_registration",
+           "data": [
+             {
+               "body": {
+                 "number": "1",
+                 "level": "I"
+               }
+             },
+             {
+               "body": {
+                 "number": "2",
+                 "level": "I"
+               }
+             }
+           ]
+         }
+       },
+       "request": {
+         "query_params": {},
+         "body": [
+           {
+             "parkingPlaceId": ".+"
+           },
+           {
+             "parkingPlaceId": ".+"
+           }
+         ]
+       },
+       "response": {
+         "code": 400,
+         "body": {
+           "Wrong_parameters":"Date may not be null or in past"
+         }
+       },
+       "description": "marking for from past to future dates"
+     }
+    ]
+  },
+  "mark_parking_slots_available_for_booking_for_dates_after_selected_limit_failure": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {
+                "start": "7d",
+                "end": "34d"
+              }
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {
+              "parkingPlaceId": ".+"
+            },
+            {
+              "parkingPlaceId": ".+"
+            }
+          ]
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "Wrong_parameters":"Date may not be null or after 1 month\\(s\\) from now"
+          }
+        },
+        "description": "marking with from before to after selected limit"
+      },
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {
+                "start": "32d",
+                "end": "40d"
+              }
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {
+              "parkingPlaceId": ".+"
+            },
+            {
+              "parkingPlaceId": ".+"
+            }
+          ]
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "Wrong_parameters":"Date may not be null or after 1 month\\(s\\) from now"
+          }
+        },
+        "description": "trying to mark slots after selected limit"
+      },
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {
+                "start": "-3d",
+                "end": "36d"
+              }
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {
+              "parkingPlaceId": ".+"
+            },
+            {
+              "parkingPlaceId": ".+"
+            }
+          ]
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "Wrong_parameters":"Date may not be null or after 1 month\\(s\\) from now"
+          }
+        },
+        "description": "marking start in past end in after limit"
+      }
+    ]
+  },
+  "mark_parking_slots_available_for_booking_with_end_date_before_start_date_failure": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {
+                "start": "10d",
+                "end": "4d"
+              }
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {
+              "parkingPlaceId": ".+"
+            },
+            {
+              "parkingPlaceId": ".+"
+            }
+          ]
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "Wrong_parameters": "End date may not be before start"
+          }
+        },
+        "description": "marking with end date before start date"
+      },
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {
+                "start": "6d",
+                "end": "-2d"
+              }
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {
+              "parkingPlaceId": ".+"
+            },
+            {
+              "parkingPlaceId": ".+"
+            }
+          ]
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "Wrong_parameters":"Date may not be null or in past"
+          }
+        },
+        "description": "marking with start date from future, end date from past"
+      }
+    ]
+  },
+  "mark_parking_slots_available_for_booking_when_some_of_them_already_marked_failure": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {
+                "start": "1d",
+                "end": "4d"
+              }
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "3",
+                  "level": "I"
+                }
+              }
+            ]
+          },
+          "primary_parking_slots": {
+            "request_name": "mark_parking_slots_for_booking",
+            "data": [
+              {
+                "body": [
+                  {
+                    "parkingPlaceId": ".+"
+                  },
+                  {
+                    "parkingPlaceId": ".+"
+                  }
+                ],
+                "query_params": {}
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {
+              "parkingPlaceId": ".+"
+            },
+            {
+              "parkingPlaceId": ".+"
+            }
+          ]
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "Wrong_parameters": "One or more chosen parking places already set available"
+          }
+        },
+        "description": "marking slots already marked"
+      }
+    ]
+  },
+  "mark_parking_slots_available_for_booking_when_some_of_them_do_not_exist_failure": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {
+                "start": "2d",
+                "end": "6d"
+              }
+            ]
+          },
+          "fake_parking_places": {
+            "data": [
+              {
+                "parkingPlaceId": "qwerty"
+              }
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {
+              "parkingPlaceId": ".+"
+            },
+            {
+              "parkingPlaceId": ".+"
+            }
+          ]
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "Wrong_parameters": "One or more chosen parking places not found"
+          }
+        },
+        "description": "marking not existing places"
+      }
+    ]
+  },
+  "mark_parking_slots_available_for_booking_using_dates_boundary_values_success": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {"start": "", "end": ""}
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {"parkingPlaceId": ".+"},
+            {"parkingPlaceId": ".+"}
+          ]
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "success": "Empty reservations for existing parking places succesfully added"
+          }
+        },
+        "description": "marking all places for today"
+      },
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {"start": "", "end": "1d"}
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {"parkingPlaceId": ".+"},
+            {"parkingPlaceId": ".+"}
+          ]
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "success": "Empty reservations for existing parking places succesfully added"
+          }
+        },
+        "description": "marking places for today and for tommorow"
+      },
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {"start": "1d", "end": "1d"}
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {"parkingPlaceId": ".+"},
+            {"parkingPlaceId": ".+"}
+          ]
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "success": "Empty reservations for existing parking places succesfully added"
+          }
+        },
+        "description": "marking places for tommorow"
+      },
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {"start": "1m", "end": "1m"}
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {"parkingPlaceId": ".+"},
+            {"parkingPlaceId": ".+"}
+          ]
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "success": "Empty reservations for existing parking places succesfully added"
+          }
+        },
+        "description": "marking places for a day after a month"
+      },
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {"start": "-1d 1m", "end": "1m"}
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {"parkingPlaceId": ".+"},
+            {"parkingPlaceId": ".+"}
+          ]
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "success": "Empty reservations for existing parking places succesfully added"
+          }
+        },
+        "description": "marking places for a day after a month and a next day"
+      },
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {"start": "-1d 1m", "end": "-1d 1m"}
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {"parkingPlaceId": ".+"},
+            {"parkingPlaceId": ".+"}
+          ]
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "success": "Empty reservations for existing parking places succesfully added"
+          }
+        },
+        "description": "marking places for a next day after a month"
+      }
+    ]
+  },
+  "mark_parking_slots_available_for_booking_using_dates_boundary_values_failure": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {
+                "start": "-1d",
+                "end": "-1d"
+              }
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {
+              "parkingPlaceId": ".+"
+            },
+            {
+              "parkingPlaceId": ".+"
+            }
+          ]
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "Wrong_parameters":"Date may not be null or in past"
+          }
+        },
+        "description": "trying to mark places for yesterday"
+      },
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {
+                "start": "-1d",
+                "end": ""
+              }
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {
+              "parkingPlaceId": ".+"
+            },
+            {
+              "parkingPlaceId": ".+"
+            }
+          ]
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "Wrong_parameters":"Date may not be null or in past"
+          }
+        },
+        "description": "trying to mark places for today and yesterday"
+      },
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {
+                "start": "1m",
+                "end": "1m 1d"
+              }
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {
+              "parkingPlaceId": ".+"
+            },
+            {
+              "parkingPlaceId": ".+"
+            }
+          ]
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "Wrong_parameters":"Date may not be null or after 1 month\\(s\\) from now"
+          }
+        },
+        "description": "trying to mark places for a day after a month and a next day"
+      },
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {
+                "start": "1m 1d",
+                "end": "1m 1d"
+              }
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {
+              "parkingPlaceId": ".+"
+            },
+            {
+              "parkingPlaceId": ".+"
+            }
+          ]
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "Wrong_parameters":"Date may not be null or after 1 month\\(s\\) from now"
+          }
+        },
+        "description": "trying to mark places for a next day after a month"
+      }
+    ]
+  },
+
+  "mark_parking_slots_available_for_booking_using_parking_places_boundary_values_success": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "primary_dates": {
+            "data": [
+              {"start": "1d", "end": "2d"}
+            ]
+          },
+          "dates": {
+            "data": [
+              {"start": "3d", "end": "4d"}
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          },
+          "primary_parking_slots": {
+            "request_name": "mark_parking_slots_for_booking",
+            "data": [
+              {
+                "body": [
+                  {
+                    "parkingPlaceId": ".+"
+                  },
+                  {
+                    "parkingPlaceId": ".+"
+                  }
+                ],
+                "query_params": {}
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {"parkingPlaceId": ".+"},
+            {"parkingPlaceId": ".+"}
+          ]
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "success": "Empty reservations for existing parking places succesfully added"
+          }
+        },
+        "description": "marking places for two days and then for next two days"
+      }
+    ]
+  },
+  "mark_parking_slots_available_for_booking_using_parking_places_boundary_values_failure": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "primary_dates": {
+            "data": [
+              {
+                "start": "1d",
+                "end": "2d"
+              }
+            ]
+          },
+          "dates": {
+            "data": [
+              {
+                "start": "2d",
+                "end": "3d"
+              }
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          },
+          "primary_parking_slots": {
+            "request_name": "mark_parking_slots_for_booking",
+            "data": [
+              {
+                "body": [
+                  {
+                    "parkingPlaceId": ".+"
+                  },
+                  {
+                    "parkingPlaceId": ".+"
+                  }
+                ],
+                "query_params": {}
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {
+              "parkingPlaceId": ".+"
+            },
+            {
+              "parkingPlaceId": ".+"
+            }
+          ]
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "Wrong_parameters":"One or more chosen parking places already set available"
+          }
+        },
+        "description": "trying to mark places using parking places boundary values"
+      }
+    ]
+  },
+  "mark_parking_slots_available_for_booking_using_different_parking_places_values_success": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "primary_dates": {
+            "data": [
+              {
+                "start": "1d",
+                "end": "2d"
+              }
+            ]
+          },
+          "dates": {
+            "data": [
+              {
+                "start": "1d",
+                "end": "2d"
+              }
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          },
+          "primary_parking_slots": {
+            "request_name": "mark_parking_slots_for_booking",
+            "data": [
+              {
+                "body": [
+                  {
+                    "parkingPlaceId": ".+"
+                  }
+                ],
+                "query_params": {}
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {
+              "parkingPlaceId": ".+"
+            }
+          ]
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "success": "Empty reservations for existing parking places succesfully added"
+          }
+        },
+        "description": "marking two different places for the same days"
+      }
+    ]
+  },
+  "mark_parking_slots_available_for_booking_without_passing_dates_failure": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "body": [
+            {
+              "parkingPlaceId": ".+"
+            },
+            {
+              "parkingPlaceId": ".+"
+            }
+          ]
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "Wrong_parameters": "Date may not be null or after 1 month\\(s\\) from now"
+          }
+        },
+        "description": "trying to mark places without passing any data about dates"
+      }
+    ]
+  },
+  "mark_parking_slots_available_for_booking_with_passing_empty_dates_failure": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {
+                "start": "",
+                "end": ""
+              }
+            ]
+          },
+          "parking": {
+            "request_name": "parking_configuration",
+            "data": [
+              {
+                "body": {
+                  "name": "Lublin main office",
+                  "capacity": 100
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {},
+          "body": [
+            {
+              "parkingPlaceId": ".+"
+            },
+            {
+              "parkingPlaceId": ".+"
+            }
+          ]
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "Wrong_parameters": "Date may not be null or after 1 month\\(s\\) from now"
+          }
+        },
+        "description": "trying to mark places using empty values for dates"
+      }
+    ]
+  }
+}

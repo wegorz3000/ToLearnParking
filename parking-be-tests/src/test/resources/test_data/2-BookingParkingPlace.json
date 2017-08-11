@@ -1,0 +1,651 @@
+{
+  "configuration_requests": {
+    "cars": {
+      "request_name": "car_registration",
+      "data": [
+        {
+          "body":{
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "LB 123B",
+            "activeState": true
+          }
+        },
+        {
+          "body": {
+            "brand": "Polonez",
+            "model": "Caro",
+            "color": "red",
+            "plateNumber": "LB 123C",
+            "activeState": true
+          }
+        }
+      ]
+    },
+    "slots_dates": {
+      "data": [
+        {"start": "1d", "end": "2d"}
+      ]
+    },
+    "parking": {
+      "request_name": "parking_configuration",
+      "data": [
+        {
+          "body": {
+            "name": "Lublin main office",
+            "capacity": 100
+          }
+        }
+      ]
+    },
+    "parking_places": {
+      "request_name": "parking_place_registration",
+      "data": [
+        {
+          "body": {
+            "number": "1",
+            "level": "I"
+          }
+        },
+        {
+          "body": {
+            "number": "2",
+            "level": "I"
+          }
+        }
+      ]
+    },
+    "unmarked_parking_places": {
+      "request_name": "parking_place_registration",
+      "data": [
+        {
+          "body": {
+            "number": "3",
+            "level": "II"
+          }
+        },
+        {
+          "body": {
+            "number": "4",
+            "level": "II"
+          }
+        }
+      ]
+    },
+    "parking_slots": {
+      "request_name": "mark_parking_slots_for_booking",
+      "data": [
+        {
+          "query_params": {},
+          "body": [
+            {
+              "parkingPlaceId": ".+"
+            },
+            {
+              "parkingPlaceId": ".+"
+            }
+          ]
+        }
+      ]
+
+    }
+  },
+  "url": "/reservation/",
+  "method": "POST",
+  "Content-Type": "application/json",
+  "booking_parking_place_success": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {
+                "start": "1d",
+                "end": "2d"
+              }
+            ]
+          }
+        },
+        "request": {
+          "body": {
+            "parkingPlace": {
+              "parkingPlaceId": ".+"
+            },
+            "car": {
+              "id": ".+"
+            },
+            "start": ".+",
+            "end": ".+"
+
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "id": ".+",
+            "parkingPlace": {
+              "parkingPlaceId": ".+"
+            },
+            "car": {
+              "id": ".+"
+            },
+            "start": ".+",
+            "end": ".+"
+          }
+        },
+        "description": "success booking parking place"
+      }
+    ]
+  },
+  "booking_parking_place_with_inactive_car_failure": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {
+                "start": "1d",
+                "end": "2d"
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          },
+          "parking_slots": {
+            "request_name": "mark_parking_slots_for_booking",
+            "data": [
+              {
+                "query_params": {},
+                "body": [
+                  {
+                    "parkingPlaceId": ".+"
+                  },
+                  {
+                    "parkingPlaceId": ".+"
+                  }
+                ]
+              }
+            ]
+
+          },
+          "inactive_cars": {
+            "request_name": "car_registration",
+            "data": [
+              {
+                "body":{
+                  "brand": "Mercedes",
+                  "model": "Benz",
+                  "color": "black",
+                  "plateNumber": "LB 123B",
+                  "activeState": false
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "body": {
+            "parkingPlace": {
+              "parkingPlaceId": ".+"
+            },
+            "car": {
+              "id": ".+"
+            },
+            "start": ".+",
+            "end": ".+"
+
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "error":"You can't reserve inactive car."
+          }
+        },
+        "description": "booking parking place for inactive car"
+      }
+    ]
+  },
+  "booking_parking_place_not_marked_as_available_failure": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {
+                "start": "1d",
+                "end": "2d"
+              }
+            ]
+          },
+          "cars": {
+            "request_name": "car_registration",
+            "data": [
+              {
+                "body":{
+                  "brand": "Mercedes",
+                  "model": "Benz",
+                  "color": "black",
+                  "plateNumber": "LB 123B",
+                  "activeState": true
+                }
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "body": {
+            "parkingPlace": {
+              "parkingPlaceId": ".+"
+            },
+            "car": {
+              "id": ".+"
+            },
+            "start": ".+",
+            "end": ".+"
+
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "error":"Entered wrong date or parking place id."
+          }
+        },
+        "description": "booking parking place not marked as available"
+      }
+    ]
+  },
+  "booking_not_existing_parking_place_failure": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {
+                "start": "1d",
+                "end": "2d"
+              }
+            ]
+          },
+          "cars": {
+            "request_name": "car_registration",
+            "data": [
+              {
+                "body":{
+                  "brand": "Mercedes",
+                  "model": "Benz",
+                  "color": "black",
+                  "plateNumber": "LB 123B",
+                  "activeState": true
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "body": {
+            "parkingPlace": {
+              "parkingPlaceId": "qwerty"
+            },
+            "car": {
+              "id": ".+"
+            },
+            "start": ".+",
+            "end": ".+"
+
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "error":"Entered wrong date or parking place id."
+          }
+        },
+        "description": "booking parking place of wrong id"
+      }
+    ]
+  },
+  "booking_parking_place_without_providing_parking_place_id_failure": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {
+                "start": "1d",
+                "end": "2d"
+              }
+            ]
+          },
+          "cars": {
+            "request_name": "car_registration",
+            "data": [
+              {
+                "body":{
+                  "brand": "Mercedes",
+                  "model": "Benz",
+                  "color": "black",
+                  "plateNumber": "LB 123B",
+                  "activeState": true
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "body": {
+            "car": {
+              "id": ".+"
+            },
+            "start": ".+",
+            "end": ".+"
+
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "parkingPlace": "may not be null"
+          }
+        },
+        "description": "booking parking place without providing parking place id"
+      }
+    ]
+  },
+  "booking_parking_place_without_providing_dates_failure": {
+    "data": [
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {
+                "start": "1d",
+                "end": "2d"
+              }
+            ]
+          },
+          "booking_dates": {
+            "data": [
+              {
+                "start": "1d"
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          },
+          "parking_slots": {
+            "request_name": "mark_parking_slots_for_booking",
+            "data": [
+              {
+                "query_params": {},
+                "body": [
+                  {
+                    "parkingPlaceId": ".+"
+                  },
+                  {
+                    "parkingPlaceId": ".+"
+                  }
+                ]
+              }
+            ]
+
+          },
+          "cars": {
+            "request_name": "car_registration",
+            "data": [
+              {
+                "body":{
+                  "brand": "Mercedes",
+                  "model": "Benz",
+                  "color": "black",
+                  "plateNumber": "LB 123B",
+                  "activeState": true
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "body": {
+            "parkingPlace": {
+              "parkingPlaceId": ".+"
+            },
+            "car": {
+              "id": ".+"
+            },
+            "start": ".+"
+
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "end": "may not be null"
+          }
+        },
+        "description": "booking parking place without end date"
+      },
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {
+                "start": "1d",
+                "end": "2d"
+              }
+            ]
+          },
+          "booking_dates": {
+            "data": [
+              {
+                "end": "1d"
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          },
+          "parking_slots": {
+            "request_name": "mark_parking_slots_for_booking",
+            "data": [
+              {
+                "query_params": {},
+                "body": [
+                  {
+                    "parkingPlaceId": ".+"
+                  },
+                  {
+                    "parkingPlaceId": ".+"
+                  }
+                ]
+              }
+            ]
+
+          },
+          "cars": {
+            "request_name": "car_registration",
+            "data": [
+              {
+                "body":{
+                  "brand": "Mercedes",
+                  "model": "Benz",
+                  "color": "black",
+                  "plateNumber": "LB 123B",
+                  "activeState": true
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "body": {
+            "parkingPlace": {
+              "parkingPlaceId": ".+"
+            },
+            "car": {
+              "id": ".+"
+            },
+            "end": ".+"
+
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "start": "may not be null"
+          }
+        },
+        "description": "booking parking place without start date"
+      },
+      {
+        "item_configuration_requests": {
+          "dates": {
+            "data": [
+              {
+                "start": "1d",
+                "end": "2d"
+              }
+            ]
+          },
+          "booking_dates": {
+            "data": [
+              {
+
+              }
+            ]
+          },
+          "parking_places": {
+            "request_name": "parking_place_registration",
+            "data": [
+              {
+                "body": {
+                  "number": "1",
+                  "level": "I"
+                }
+              },
+              {
+                "body": {
+                  "number": "2",
+                  "level": "I"
+                }
+              }
+            ]
+          },
+          "parking_slots": {
+            "request_name": "mark_parking_slots_for_booking",
+            "data": [
+              {
+                "query_params": {},
+                "body": [
+                  {
+                    "parkingPlaceId": ".+"
+                  },
+                  {
+                    "parkingPlaceId": ".+"
+                  }
+                ]
+              }
+            ]
+
+          },
+          "cars": {
+            "request_name": "car_registration",
+            "data": [
+              {
+                "body":{
+                  "brand": "Mercedes",
+                  "model": "Benz",
+                  "color": "black",
+                  "plateNumber": "LB 123B",
+                  "activeState": true
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "body": {
+            "parkingPlace": {
+              "parkingPlaceId": ".+"
+            },
+            "car": {
+              "id": ".+"
+            }
+
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "start": "may not be null",
+            "end": "may not be null"
+          }
+        },
+        "description": "booking parking place without dates"
+      }
+    ]
+  }
+}

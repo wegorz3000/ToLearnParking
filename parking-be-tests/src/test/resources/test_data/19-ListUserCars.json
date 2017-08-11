@@ -1,0 +1,225 @@
+{
+  "url": "car/list",
+  "method": "GET",
+  "Content-Type": "application/json",
+  "list_user_cars_filled_success": {
+
+    "data": [
+      {
+        "item_configuration_requests": {
+          "user": {
+            "method": "POST",
+            "url": "/register",
+            "Content-Type": "application/json",
+            "data": [
+              {
+                "body": {
+                  "userNameAndSurname": "Qwerty Ytrewq",
+                  "fourLetterMobicaShortcut": "qwer",
+                  "userEmailAddress": "qwerty.ytrewq@mobica.com"
+                }
+              }
+            ]
+          },
+          "cars": {
+            "method": "POST",
+            "url": "/car/add",
+            "Content-Type": "application/json",
+            "data": [
+              {
+                "body":{
+                  "owner": {
+                    "userId": ".+"
+                  },
+                  "brand": "Mercedes",
+                  "model": "Benz",
+                  "color": "black",
+                  "plateNumber": "LB 123B",
+                  "activeState": true
+                }
+              },
+              {
+                "body": {
+                  "owner": {
+                    "userId": ".+"
+                  },
+                  "brand": "Polonez",
+                  "model": "Caro",
+                  "color": "red",
+                  "plateNumber": "LB 123C",
+                  "activeState": false
+                }
+              },
+              {
+                "body": {
+                  "owner": {
+                    "userId": ".+"
+                  },
+                  "brand": "Fiat",
+                  "model": "126p",
+                  "color": "yellow",
+                  "plateNumber": "LB 123D"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {}
+        },
+        "response": {
+          "code": 200,
+          "body":[
+          {
+            "id": ".+",
+            "owner": {
+              "userId": ".+"
+            },
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "LB 123B",
+            "activeState": true
+          },
+          {
+            "id": ".+",
+            "owner": {
+              "userId": ".+"
+            },
+            "brand": "Polonez",
+            "model": "Caro",
+            "color": "red",
+            "plateNumber": "LB 123C",
+            "activeState": false
+          },
+          {
+            "id": ".+",
+            "owner": {
+              "userId": ".+"
+            },
+            "brand": "Fiat",
+            "model": "126p",
+            "color": "yellow",
+            "plateNumber": "LB 123D",
+            "activeState": true
+          }
+        ]},
+        "description": "correct user with 3 cars"
+      },
+
+
+
+      {
+        "item_configuration_requests": {
+          "user": {
+            "method": "POST",
+            "url": "/register",
+            "Content-Type": "application/json",
+            "data": [
+              {
+                "body": {
+                  "userNameAndSurname": "Qwerty Ytrewqqq",
+                  "fourLetterMobicaShortcut": "qqqq",
+                  "userEmailAddress": "qwerty.ytrewqqq@mobica.com"
+                }
+              }
+            ]
+          },
+          "cars": {
+            "method": "POST",
+            "url": "/car/add",
+            "Content-Type": "application/json",
+            "data": [
+              {
+                "body":{
+                  "owner": {
+                    "userId": ".+"
+                  },
+                  "brand": "Mercedes",
+                  "model": "Benz",
+                  "color": "black",
+                  "plateNumber": "LB 123B",
+                  "activeState": true
+                }
+              },
+              {
+                "body": {
+                  "owner": {
+                    "userId": ".+"
+                  },
+                  "brand": "Polonez",
+                  "model": "Caro",
+                  "color": "red",
+                  "plateNumber": "LB 123C",
+                  "activeState": false
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {}
+        },
+        "response": {
+          "code": 200,
+          "body":[
+            {
+              "id": ".+",
+              "owner": {
+                "userId": ".+"
+              },
+              "brand": "Mercedes",
+              "model": "Benz",
+              "color": "black",
+              "plateNumber": "LB 123B",
+              "activeState": true
+            },
+            {
+              "id": ".+",
+              "owner": {
+                "userId": ".+"
+              },
+              "brand": "Polonez",
+              "model": "Caro",
+              "color": "red",
+              "plateNumber": "LB 123C",
+              "activeState": false
+            }
+          ]},
+        "description": "correct user with 2 cars"
+      }
+    ]
+  },
+  "list_user_cars_empty_success": {
+
+    "data": [
+      {
+        "item_configuration_requests": {
+          "user": {
+            "method": "POST",
+            "url": "/register",
+            "Content-Type": "application/json",
+            "data": [
+              {
+                "body": {
+                  "userNameAndSurname": "Qwerty Ytrewq",
+                  "fourLetterMobicaShortcut": "qwer",
+                  "userEmailAddress": "qwerty.ytrewq@mobica.com"
+                }
+              }
+            ]
+          }
+        },
+        "request": {
+          "query_params": {}
+        },
+        "response": {
+          "code": 200,
+          "body": []
+        },
+        "description": "correct user with no cars"
+      }
+    ]
+  }
+
+}

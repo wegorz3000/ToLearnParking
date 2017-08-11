@@ -1,0 +1,676 @@
+{
+  "url": "car/add",
+  "method": "POST",
+  "Content-Type": "application/json",
+  "car_registration_success": {
+
+    "data": [
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "LB 123B",
+            "activeState": true
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "id": ".+",
+            "owner": null,
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "LB 123B",
+            "activeState": true
+
+          }
+        },
+        "description": "basic correct data with active state set to true"
+      },
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "LB 123B",
+            "activeState": false
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "id": ".+",
+            "owner": null,
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "LB 123B",
+            "activeState": false
+
+          }
+        },
+        "description": "basic correct data with active state set to false"
+      },
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "LB 123B",
+            "activeState": ""
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "id": ".+",
+            "owner": null,
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "LB 123B",
+            "activeState": true
+
+          }
+        },
+        "description": "basic correct data with empty value for active state"
+      },
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "id": ".*",
+            "owner": null,
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "LB 123B",
+            "activeState": true
+          }
+        },
+        "description": "basic correct data without a value for active state"
+      }
+    ]
+  },
+  "car_registration_with_boundary_values_success": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "brand": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwer",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "id": ".*",
+            "owner": {
+
+            },
+            "brand": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwer",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "description": "correct values with brand name length equal to 100 characters"
+      },
+      {
+        "request": {
+          "body": {
+            "brand": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwe",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "id": ".*",
+            "owner": {
+
+            },
+            "brand": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwe",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "description": "correct values with brand name length equal to 99 characters"
+      },
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwer",
+            "color": "black",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "id": ".*",
+            "owner": {
+
+            },
+            "brand": "Mercedes",
+            "model": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwer",
+            "color": "black",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "description": "correct values with model name length equal to 100 characters"
+      },
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwe",
+            "color": "black",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "id": ".*",
+            "owner": {
+
+            },
+            "brand": "Mercedes",
+            "model": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwe",
+            "color": "black",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "description": "correct values with model name length equal to 99 characters"
+      },
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwer",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "id": ".*",
+            "owner": {
+
+            },
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwer",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "description": "correct values with color name length equal to 100 characters"
+      },
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwe",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "id": ".*",
+            "owner": {
+
+            },
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwe",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "description": "correct values with color name length equal to 99 characters"
+      },
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwer"
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "id": ".*",
+            "owner": {
+
+            },
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwer"
+          }
+        },
+        "description": "correct values with plate number length equal to 100 characters"
+      },
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwe"
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "id": ".*",
+            "owner": {
+
+            },
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwe"
+          }
+        },
+        "description": "correct values with plate number length equal to 99 characters"
+      }
+    ]
+  },
+  "car_registration_without_brand_name_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "brand": "",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "brand": "size must be between 1 and 100"
+          }
+        },
+        "description": "empty brand name"
+      },
+      {
+        "request": {
+          "body": {
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "brand": "may not be null"
+          }
+        },
+        "description": "no brand name"
+      }
+
+    ]
+  },
+  "car_registration_with_too_long_brand_name_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "brand": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwerty",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "brand": "size must be between 1 and 100"
+          }
+        },
+        "description": "too long brand name"
+      }
+
+    ]
+  },
+  "car_registration_without_model_name_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "",
+            "color": "black",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "model": "size must be between 1 and 100"
+          }
+        },
+        "description": "empty model name"
+      },
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "color": "black",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "model": "may not be null"
+          }
+        },
+        "description": "no model name"
+      }
+
+    ]
+  },
+  "car_registration_with_too_long_model_name_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwerty",
+            "color": "black",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "model": "size must be between 1 and 100"
+          }
+        },
+        "description": "too long model name"
+      }
+
+    ]
+  },
+  "car_registration_without_color_name_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "color": "size must be between 1 and 100"
+          }
+        },
+        "description": "empty color name"
+      },
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Benz",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "color": "may not be null"
+          }
+        },
+        "description": "no color name"
+      }
+
+    ]
+  },
+  "car_registration_with_too_long_color_name_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwerty",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "color": "size must be between 1 and 100"
+          }
+        },
+        "description": "too long color name"
+      }
+
+    ]
+  },
+  "car_registration_without_plate_number_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": ""
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "plateNumber": "size must be between 1 and 100"
+          }
+        },
+        "description": "empty plate number"
+      },
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "black"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "plateNumber": "may not be null"
+          }
+        },
+        "description": "no plate number"
+      }
+
+    ]
+  },
+  "car_registration_with_too_long_plate_number_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwerty"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "plateNumber": "size must be between 1 and 100"
+          }
+        },
+        "description": "too long plate number"
+      }
+
+    ]
+  },
+  "car_registration_with_incorrect_active_state_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "LB 123B",
+            "activeState": "qwerty"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "JSONSyntaxError": "Wrong JSON format."
+          }
+        },
+        "description": "incorrect active state value - letters value"
+      },
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "LB 123B",
+            "activeState": "4"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "JSONSyntaxError": "Wrong JSON format."
+          }
+        },
+        "description": "incorrect active state value - number passed as string value"
+      },
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "LB 123B",
+            "activeState": "----"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "JSONSyntaxError": "Wrong JSON format."
+          }
+        },
+        "description": "incorrect active state value - no alphanumeric value"
+      }
+
+    ]
+  },
+  "car_registration_with_incorrect_boundary_values_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "brand": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwert",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "brand": "size must be between 1 and 100"
+          }
+        },
+        "description": "brand name length equal to 101 characters"
+      },
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwert",
+            "color": "black",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "model": "size must be between 1 and 100"
+          }
+        },
+        "description": "model name length equal to 101 characters"
+      },
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwert",
+            "plateNumber": "LB 123B"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "color": "size must be between 1 and 100"
+          }
+        },
+        "description": "color name length equal to 101 characters"
+      },
+      {
+        "request": {
+          "body": {
+            "brand": "Mercedes",
+            "model": "Benz",
+            "color": "black",
+            "plateNumber": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwert"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "plateNumber": "size must be between 1 and 100"
+          }
+        },
+        "description": "plate number length equal to 101 characters"
+      }
+
+    ]
+  }
+}

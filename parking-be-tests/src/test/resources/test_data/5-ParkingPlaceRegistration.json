@@ -1,0 +1,643 @@
+{
+  "configuration_requests": {
+    "parking": {
+      "method": "POST",
+      "url": "/parking",
+      "data": [
+        {
+          "body": {
+            "name": "Lublin main office",
+            "capacity": 100
+          }
+        }
+      ],
+      "Content-Type": "application/json"
+    }
+  },
+  "url": "/parking/place/",
+  "method": "POST",
+  "Content-Type": "application/json",
+  "parking_place_registration_success": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "number": "1",
+            "level": "IV",
+            "location" : "Lublin",
+            "maxCarWeight": "LESS_THAN_1_5T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "parkingPlaceId": ".*",
+            "parking": {
+
+            },
+            "number": "1",
+            "level": "IV",
+            "location": "Lublin",
+            "maxCarWeight": "LESS_THAN_1_5T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          }
+        },
+        "description": "basic correct data with 'less than 1,5t' max car weight"
+      },
+      {
+        "request": {
+          "body": {
+            "number": "1",
+            "level": "IV",
+            "location" : "Lublin",
+            "maxCarWeight": "FROM_1_5_TO_2T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "parkingPlaceId": ".*",
+            "parking": {
+
+            },
+            "number": "1",
+            "level": "IV",
+            "location": "Lublin",
+            "maxCarWeight": "FROM_1_5_TO_2T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          }
+        },
+        "description": "basic correct data with '1,5 - 2 t' max car weight"
+      },
+      {
+        "request": {
+          "body": {
+            "number": "1",
+            "level": "IV",
+            "location" : "Lublin",
+            "maxCarWeight": "MORE_THAN_2T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "parkingPlaceId": ".*",
+            "parking": {
+
+            },
+            "number": "1",
+            "level": "IV",
+            "location": "Lublin",
+            "maxCarWeight": "MORE_THAN_2T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          }
+        },
+        "description": "basic correct data with 'more than 2t' max car weight"
+      }
+    ]
+  },
+  "parking_place_registration_with_correct_boundary_values_success": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "number": "12345678901234567890",
+            "level": "IV",
+            "location" : "Lublin",
+            "maxCarWeight": "LESS_THAN_1_5T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          },
+          "Content-Type": "application/json"
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "parkingPlaceId": ".*",
+            "parking": {
+              "parkingID": ".*"
+            },
+            "number": "12345678901234567890",
+            "level": "IV",
+            "location": "Lublin",
+            "maxCarWeight": "LESS_THAN_1_5T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          }
+        },
+        "description": "number length equal to 20 characters"
+      },
+      {
+        "request": {
+        "body": {
+          "number": "1234567890123456789",
+          "level": "IV",
+          "location" : "Lublin",
+          "maxCarWeight": "LESS_THAN_1_5T",
+          "maxCarLength": 100,
+          "maxCarWidth": 100
+
+        },
+        "Content-Type": "application/json"
+      },
+        "response": {
+          "code": 200,
+          "body": {
+            "parkingPlaceId": ".*",
+            "parking": {
+              "parkingID": ".*"
+            },
+            "number": "1234567890123456789",
+            "level": "IV",
+            "location": "Lublin",
+            "maxCarWeight": "LESS_THAN_1_5T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          }
+        },
+        "description": "number length equal to 19 characters"
+      },
+      {
+        "request": {
+        "body": {
+          "number": "12",
+          "level": "12345678901234567890",
+          "location" : "Lublin",
+          "maxCarWeight": "LESS_THAN_1_5T",
+          "maxCarLength": 100,
+          "maxCarWidth": 100
+
+        },
+        "Content-Type": "application/json"
+      },
+        "response": {
+          "code": 200,
+          "body": {
+            "parkingPlaceId": ".*",
+            "parking": {
+              "parkingID": ".*"
+            },
+            "number": "12",
+            "level": "12345678901234567890",
+            "location": "Lublin",
+            "maxCarWeight": "LESS_THAN_1_5T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          }
+        },
+        "description": "level length equal to 20 characters"
+      },
+      {
+        "request": {
+          "body": {
+            "number": "12",
+            "level": "1234567890123456789",
+            "location" : "Lublin",
+            "maxCarWeight": "LESS_THAN_1_5T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          },
+          "Content-Type": "application/json"
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "parkingPlaceId": ".*",
+            "parking": {
+              "parkingID": ".*"
+            },
+            "number": "12",
+            "level": "1234567890123456789",
+            "location": "Lublin",
+            "maxCarWeight": "LESS_THAN_1_5T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          }
+        },
+        "description": "level length equal to 19 characters"
+      },
+      {
+        "request": {
+          "body": {
+            "number": "12",
+            "level": "IV",
+            "location" : "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwer",
+            "maxCarWeight": "LESS_THAN_1_5T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          },
+          "Content-Type": "application/json"
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "parkingPlaceId": ".*",
+            "parking": {
+              "parkingID": ".*"
+            },
+            "number": "12",
+            "level": "IV",
+            "location": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwer",
+            "maxCarWeight": "LESS_THAN_1_5T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          }
+        },
+        "description": "location length equal to 100 characters"
+      },
+      {
+        "request": {
+          "body": {
+            "number": "12",
+            "level": "IV",
+            "location" : "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwe",
+            "maxCarWeight": "LESS_THAN_1_5T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          },
+          "Content-Type": "application/json"
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "parkingPlaceId": ".*",
+            "parking": {
+              "parkingID": ".*"
+            },
+            "number": "12",
+            "level": "IV",
+            "location": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwe",
+            "maxCarWeight": "LESS_THAN_1_5T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          }
+        },
+        "description": "location length equal to 99 characters"
+      }
+    ]
+  },
+  "parking_place_registration_with_incorrect_boundary_values_success": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "number": "123456789012345678901",
+            "level": "IV",
+            "location" : "Lublin",
+            "maxCarWeight": "LESS_THAN_1_5T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          },
+          "Content-Type": "application/json"
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "number": "size must be between 1 and 20"
+
+          }
+        },
+        "description": "number length equal to 21 characters"
+      },
+      {
+        "request": {
+          "body": {
+            "number": "12",
+            "level": "123456789012345678901",
+            "location" : "Lublin",
+            "maxCarWeight": "LESS_THAN_1_5T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          },
+          "Content-Type": "application/json"
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "level": "size must be between 1 and 20"
+          }
+        },
+        "description": "level length equal to 21 characters"
+      },
+      {
+        "request": {
+          "body": {
+            "number": "12",
+            "level": "IV",
+            "location" : "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwert",
+            "maxCarWeight": "LESS_THAN_1_5T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          },
+          "Content-Type": "application/json"
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "location": "size must be between 0 and 100"
+
+          }
+        },
+        "description": "location length equal to 101 characters"
+      }
+    ]
+  },
+  "parking_place_registration_without_number_value_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "level": "IV",
+            "location" : "Lublin",
+            "maxCarWeight": "LESS_THAN_1_5T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "number": "may not be null"
+          }
+        },
+        "description": "no number value"
+      },
+      {
+        "request": {
+          "body": {
+            "number": "",
+            "level": "IV",
+            "location" : "Lublin",
+            "maxCarWeight": "LESS_THAN_1_5T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          },
+          "Content-Type": "application/json"
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "number": "may not be empty"
+          }
+        },
+        "description": "empty number value"
+      }
+
+    ]
+  },
+  "parking_place_registration_with_too_big_number_value_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "number": "1234567890123456789012",
+            "level": "IV",
+            "location" : "Lublin",
+            "maxCarWeight": "LESS_THAN_1_5T",
+            "maxCarLength": 100,
+            "maxCarWidth": 100
+
+          },
+          "Content-Type": "application/json"
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "number": "size must be between 1 and 20"
+          }
+        },
+        "description": "too big number value"
+      }
+
+    ]
+  },
+
+  "parking_place_registration_with_too_long_level_name_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "number": "1",
+            "level": "IVIVIVIVIVIVIVIVIVIVIVIV"
+
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "level": "size must be between 0 and 20"
+          }
+        },
+        "description": "too long level name value"
+      }
+
+    ]
+  },
+  "parking_place_registration_with_too_long_location_name_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "number": "1",
+            "level": "IV",
+            "location": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwerty"
+
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "location": "size must be between 0 and 100"
+          }
+        },
+        "description": "too long location name value"
+      }
+
+    ]
+  },
+  "parking_place_registration_with_incorrect_max_car_weight_value_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "number": "1",
+            "maxCarWeight": "1234"
+
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "JSONSyntaxError": "Wrong JSON format."
+          }
+        },
+        "description": "incorrect max car weight value"
+      },
+      {
+        "request": {
+          "body": {
+            "number": "1",
+            "maxCarWeight": "LESS_THAN"
+
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "JSONSyntaxError": "Wrong JSON format."
+          }
+        },
+        "description": "incorrect max car weight value - close to correct"
+      }
+
+    ]
+  },
+  "parking_place_registration_with_max_car_length_value_as_not_a_number_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "number": "1",
+            "level": "IV",
+            "location": "Lublin",
+            "maxCarLength": "qwerty"
+
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "JSONSyntaxError": "Wrong JSON format."
+          }
+        },
+        "description": "max car length value is not a number"
+      },
+      {
+        "request": {
+          "body": {
+            "number": "1",
+            "level": "IV",
+            "location": "Lublin",
+            "maxCarLength": "10qwerty"
+
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "JSONSyntaxError": "Wrong JSON format."
+          }
+        },
+        "description": "max car length value is not a number, but starting with number"
+      },
+      {
+        "request": {
+          "body": {
+            "number": "1",
+            "level": "IV",
+            "location": "Lublin",
+            "maxCarLength": "10b"
+
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "JSONSyntaxError": "Wrong JSON format."
+          }
+        },
+        "description": "max car length value in format of binary number"
+      }
+
+    ]
+  },
+  "parking_place_registration_with_max_car_width_value_as_not_a_number_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "number": "1",
+            "level": "IV",
+            "location": "Lublin",
+            "maxCarWidth": "qwerty"
+
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "JSONSyntaxError": "Wrong JSON format."
+          }
+        },
+        "description": "max car length value is not a number"
+      },
+      {
+        "request": {
+          "body": {
+            "number": "1",
+            "level": "IV",
+            "location": "Lublin",
+            "maxCarWidth": "10qwerty"
+
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "JSONSyntaxError": "Wrong JSON format."
+          }
+        },
+        "description": "max car width value is not a number, but starting with number"
+      },
+      {
+        "request": {
+          "body": {
+            "number": "1",
+            "level": "IV",
+            "location": "Lublin",
+            "maxCarWidth": "10b"
+
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "JSONSyntaxError": "Wrong JSON format."
+          }
+        },
+        "description": "max car width value in format of binary number"
+      }
+
+    ]
+  }
+}

@@ -1,0 +1,738 @@
+{
+  "url": "/register",
+  "method": "POST",
+  "Content-Type": "application/json",
+  "user_registration_success": {
+
+    "data": [
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Qwerty Ytrewq",
+            "fourLetterMobicaShortcut": "qwer",
+            "userEmailAddress": "qwerty.ytrewq@mobica.com"
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "userId": ".*",
+            "userNameAndSurname": "Qwerty Ytrewq",
+            "fourLetterMobicaShortcut": "qwer",
+            "userEmailAddress": "qwerty.ytrewq@mobica.com"
+          }
+        },
+        "description": "basic correct data"
+      }
+    ]
+  },
+  "user_registration_small_letters_success": {
+
+    "data": [
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "qqwerty ytrewq",
+            "fourLetterMobicaShortcut": "qqwe",
+            "userEmailAddress": "qqwerty.ytrewq@mobica.com"
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "userId": ".*",
+            "userNameAndSurname": "qqwerty ytrewq",
+            "fourLetterMobicaShortcut": "qqwe",
+            "userEmailAddress": "qqwerty.ytrewq@mobica.com"
+          }
+        },
+        "description": "basic data with small letters name"
+      }
+    ]
+  },
+  "user_registration_with_correct_boundary_data_values_success": {
+
+    "data": [
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Qwerty Ytrewq",
+            "fourLetterMobicaShortcut": "qwe2",
+            "userEmailAddress": "qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwert@mobica.com"
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "userId": ".*",
+            "userNameAndSurname": "Qwerty Ytrewq",
+            "fourLetterMobicaShortcut": "qwe2",
+            "userEmailAddress": "qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwert@mobica.com"
+          }
+        },
+        "description": "email address length equal to 100 characters"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Qwerty Ytrewq",
+            "fourLetterMobicaShortcut": "qwe3",
+            "userEmailAddress": "qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwer@mobica.com"
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "userId": ".*",
+            "userNameAndSurname": "Qwerty Ytrewq",
+            "fourLetterMobicaShortcut": "qwe3",
+            "userEmailAddress": "qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwer@mobica.com"
+          }
+        },
+        "description": "email address length equal to 99 characters"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Qwerty Ytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqtr",
+            "fourLetterMobicaShortcut": "qwe4",
+            "userEmailAddress": "qwerty.ytrewq4@mobica.com"
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "userId": ".*",
+            "userNameAndSurname": "Qwerty Ytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqtr",
+            "fourLetterMobicaShortcut": "qwe4",
+            "userEmailAddress": "qwerty.ytrewq4@mobica.com"
+          }
+        },
+        "description": "name length equal to 255 characters"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Qwerty Ytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqt",
+            "fourLetterMobicaShortcut": "qwe5",
+            "userEmailAddress": "qwerty.ytrewq5@mobica.com"
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "userId": ".*",
+            "userNameAndSurname": "Qwerty Ytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqt",
+            "fourLetterMobicaShortcut": "qwe5",
+            "userEmailAddress": "qwerty.ytrewq5@mobica.com"
+          }
+        },
+        "description": "name length equal to 254 characters"
+      }
+    ]
+  },
+  "user_registration_without_name_failure": {
+
+    "data": [
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "",
+            "fourLetterMobicaShortcut": "ytre",
+            "userEmailAddress": "ytrewq.qwerty@mobica.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userNameAndSurname": "Name and surname must be separated by a space."
+          }
+        },
+        "description": "no name provided"
+      },
+      {
+        "request": {
+          "body": {
+            "fourLetterMobicaShortcut": "ytre",
+            "userEmailAddress": "ytrewq.qwerty@mobica.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userNameAndSurname": "Username and surname may not be null."
+          }
+        },
+        "description": "no name field provided"
+      }
+    ]
+  },
+  "user_registration_with_only_first_or_last_name_failure": {
+
+    "data": [
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq",
+            "fourLetterMobicaShortcut": "ytre",
+            "userEmailAddress": "ytrewq.qwerty@mobica.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userNameAndSurname": "Name and surname must be separated by a space."
+          }
+        },
+        "description": "just first name provided"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Qwerty",
+            "fourLetterMobicaShortcut": "ytre",
+            "userEmailAddress": "ytrewq.qwerty@mobica.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userNameAndSurname": "Name and surname must be separated by a space."
+          }
+        },
+        "description": "just last name provided"
+      }
+    ]
+  },
+  "user_registration_with_too_long_name_failure": {
+
+    "data": [
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwerty Qwertyqwertyqwertyqwertyqwertyqwerty qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwerty",
+            "fourLetterMobicaShortcut": "ytre",
+            "userEmailAddress": "ytrewq.qwerty@mobica.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userNameAndSurname": "Name and surname size must be lower than 255."
+          }
+        },
+        "description": "too long name (longer than 255 characters)"
+      }
+    ]
+  },
+  "user_registration_without_mobica_shortcut_failure": {
+
+    "data": [
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "fourLetterMobicaShortcut": "",
+            "userEmailAddress": "ytrewq.qwerty@mobica.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "fourLetterMobicaShortcut": "Wrong four letter Mobica shortcut."
+          }
+        },
+        "description": "empty mobica shortcut"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "userEmailAddress": "ytrewq.qwerty@mobica.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "fourLetterMobicaShortcut": "Four letter Mobica shortcut may not be null."
+          }
+        },
+        "description": "no mobica shortcut"
+      }
+    ]
+  },
+  "user_registration_with_too_long_or_too_short_mobica_shortcut_failure": {
+
+    "data": [
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "fourLetterMobicaShortcut": "q",
+            "userEmailAddress": "ytrewq.qwerty@mobica.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "fourLetterMobicaShortcut": "Wrong four letter Mobica shortcut."
+          }
+        },
+        "description": "too short mobica shortcut (1 letter)"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "fourLetterMobicaShortcut": "qw",
+            "userEmailAddress": "ytrewq.qwerty@mobica.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "fourLetterMobicaShortcut": "Wrong four letter Mobica shortcut."
+          }
+        },
+        "description": "too short mobica shortcut (2 letters)"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "fourLetterMobicaShortcut": "qwe",
+            "userEmailAddress": "ytrewq.qwerty@mobica.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "fourLetterMobicaShortcut": "Wrong four letter Mobica shortcut."
+          }
+        },
+        "description": "too short mobica shortcut (3 letters)"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "fourLetterMobicaShortcut": "qwert",
+            "userEmailAddress": "ytrewq.qwerty@mobica.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "fourLetterMobicaShortcut": "Wrong four letter Mobica shortcut."
+          }
+        },
+        "description": "too long mobica shortcut (5 letters)"
+      }
+    ]
+  },
+  "user_registration_without_email_failure": {
+
+    "data": [
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "fourLetterMobicaShortcut": "qwer",
+            "userEmailAddress": ""
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userEmailAddress": "E-mail must be registered in mobica.com domain."
+          }
+        },
+        "description": "empty email field"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "fourLetterMobicaShortcut": "qwer"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userEmailAddress": "E-mail may not be null."
+          }
+        },
+        "description": "no email field"
+      }
+    ]
+  },
+  "user_registration_with_too_long_email_failure": {
+
+    "data": [
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "fourLetterMobicaShortcut": "qwer",
+            "userEmailAddress": "qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwerty@mobica.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userEmailAddress": "E-mail size must be lower than 100."
+          }
+        },
+        "description": "too long email address (longer than 100 characters)"
+      }
+    ]
+  },
+  "user_registration_with_incorrect_email_failure": {
+
+    "data": [
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "fourLetterMobicaShortcut": "qwer",
+            "userEmailAddress": "@mobica.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userEmailAddress": "E-mail must be registered in mobica.com domain."
+          }
+        },
+        "description": "incorrect email - 1"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "fourLetterMobicaShortcut": "qwer",
+            "userEmailAddress": "mobica.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userEmailAddress": "E-mail must be registered in mobica.com domain."
+          }
+        },
+        "description": "incorrect email - 2"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "fourLetterMobicaShortcut": "qwer",
+            "userEmailAddress": "mobica.com@"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userEmailAddress": "E-mail must be registered in mobica.com domain."
+          }
+        },
+        "description": "incorrect email - 3"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "fourLetterMobicaShortcut": "qwer",
+            "userEmailAddress": "mobica@.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userEmailAddress": "E-mail must be registered in mobica.com domain."
+          }
+        },
+        "description": "incorrect email - 4"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "fourLetterMobicaShortcut": "qwer",
+            "userEmailAddress": "mobica.@com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userEmailAddress": "E-mail must be registered in mobica.com domain."
+          }
+        },
+        "description": "incorrect email - 5"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "fourLetterMobicaShortcut": "qwer",
+            "userEmailAddress": "qwerty.ytrewq@mobica.com.pl"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userEmailAddress": "E-mail must be registered in mobica.com domain."
+          }
+        },
+        "description": "incorrect email - 6"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "fourLetterMobicaShortcut": "qwer",
+            "userEmailAddress": "qwerty@gmail.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userEmailAddress": "E-mail must be registered in mobica.com domain."
+          }
+        },
+        "description": "incorrect email - 7"
+      }
+    ]
+  },
+  "user_registration_with_mixed_incorrect_data_values_failure": {
+
+    "data": [
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "",
+            "fourLetterMobicaShortcut": "",
+            "userEmailAddress": "qwerty.ytrewq@mobica.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userNameAndSurname": "Name and surname must be separated by a space.",
+            "fourLetterMobicaShortcut": "Wrong four letter Mobica shortcut."
+          }
+        },
+        "description": "mixed incorrect data values: 1"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "",
+            "fourLetterMobicaShortcut": "qwer",
+            "userEmailAddress": ""
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userNameAndSurname": "Name and surname must be separated by a space.",
+            "userEmailAddress": "E-mail must be registered in mobica.com domain."
+          }
+        },
+        "description": "mixed incorrect data values: 2"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Qwerty",
+            "fourLetterMobicaShortcut": "",
+            "userEmailAddress": "ytrewq.qwerty@mobica.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userNameAndSurname": "Name and surname must be separated by a space.",
+            "fourLetterMobicaShortcut": "Wrong four letter Mobica shortcut."
+          }
+        },
+        "description": "mixed incorrect data values: 3"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Qwerty",
+            "fourLetterMobicaShortcut": "ytre",
+            "userEmailAddress": ""
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userNameAndSurname": "Name and surname must be separated by a space.",
+            "userEmailAddress": "E-mail must be registered in mobica.com domain."
+          }
+        },
+        "description": "mixed incorrect data values: 4"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwerty Qwertyqwertyqwertyqwertyqwertyqwerty qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwerty",
+            "fourLetterMobicaShortcut": "",
+            "userEmailAddress": "ytrewq.qwerty@mobica.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userNameAndSurname": "Name and surname size must be lower than 255.",
+            "fourLetterMobicaShortcut": "Wrong four letter Mobica shortcut."
+          }
+        },
+        "description": "mixed incorrect data values: 5"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwerty Qwertyqwertyqwertyqwertyqwertyqwerty qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwerty",
+            "fourLetterMobicaShortcut": "ytre",
+            "userEmailAddress": ""
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userNameAndSurname": "Name and surname size must be lower than 255.",
+            "userEmailAddress": "E-mail must be registered in mobica.com domain."
+          }
+        },
+        "description": "mixed incorrect data values: 6"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "fourLetterMobicaShortcut": "",
+            "userEmailAddress": ""
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "fourLetterMobicaShortcut": "Wrong four letter Mobica shortcut.",
+            "userEmailAddress": "E-mail must be registered in mobica.com domain."
+          }
+        },
+        "description": "mixed incorrect data values: 7"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "fourLetterMobicaShortcut": "q",
+            "userEmailAddress": ""
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "fourLetterMobicaShortcut": "Wrong four letter Mobica shortcut.",
+            "userEmailAddress": "E-mail must be registered in mobica.com domain."
+          }
+        },
+        "description": "mixed incorrect data values: 8"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "fourLetterMobicaShortcut": "qwerty",
+            "userEmailAddress": ""
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "fourLetterMobicaShortcut": "Wrong four letter Mobica shortcut.",
+            "userEmailAddress": "E-mail must be registered in mobica.com domain."
+          }
+        },
+        "description": "mixed incorrect data values: 9"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "fourLetterMobicaShortcut": "",
+            "userEmailAddress": "qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwerty@mobica.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "fourLetterMobicaShortcut": "Wrong four letter Mobica shortcut.",
+            "userEmailAddress": "E-mail size must be lower than 100."
+          }
+        },
+        "description": "mixed incorrect data values: 10"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "fourLetterMobicaShortcut": "",
+            "userEmailAddress": "qwerty.ytrewq@.mobicacom"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "fourLetterMobicaShortcut": "Wrong four letter Mobica shortcut.",
+            "userEmailAddress": "E-mail must be registered in mobica.com domain."
+          }
+        },
+        "description": "mixed incorrect data values: 11"
+      }
+    ]
+  },
+  "user_registration_with_incorrect_boundary_data_values_failure": {
+
+    "data": [
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Ytrewq Qwerty",
+            "fourLetterMobicaShortcut": "ytre",
+            "userEmailAddress": "qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwerty@mobica.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userEmailAddress": "E-mail size must be lower than 100."
+          }
+        },
+        "description": "too long email value (longer than 100 characters)"
+      },
+      {
+        "request": {
+          "body": {
+            "userNameAndSurname": "Qwerty Ytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqytrewqtre",
+            "fourLetterMobicaShortcut": "ytre",
+            "userEmailAddress": "ytrewq.qwerty@mobica.com"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "userNameAndSurname": "Name and surname size must be lower than 255."
+          }
+        },
+        "description": "too long name (longer than 255 characters)"
+      }
+    ]
+  }
+
+
+}

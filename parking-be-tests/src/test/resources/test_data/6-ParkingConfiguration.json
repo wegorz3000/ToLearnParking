@@ -1,0 +1,330 @@
+{
+  "url": "/parking",
+  "method": "post",
+  "Content-Type": "application/json",
+  "parking_configuration_success": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "name": "Lublin main office",
+            "capacity": 100
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "id": ".*",
+            "name": "Lublin main office",
+            "capacity": 100
+          }
+        },
+        "description": "basic correct data"
+      }
+    ]
+  },
+
+  "parking_configuration_with_correct_boundary_values_success": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "name": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwer",
+            "capacity": 100
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "id": ".*",
+            "name": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwer",
+            "capacity": 100
+          }
+        },
+        "description": "name length equal to 100 characters"
+      },
+      {
+        "request": {
+          "body": {
+            "name": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwe",
+            "capacity": 100
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "id": ".*",
+            "name": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwe",
+            "capacity": 100
+          }
+        },
+        "description": "name length equal to 99 characters"
+      },
+      {
+        "request": {
+          "body": {
+            "name": "Lublin main office",
+            "capacity": 12345
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "id": ".*",
+            "name": "Lublin main office",
+            "capacity": 12345
+          }
+        },
+        "description": "capacity value length equal to 5 digits"
+      },
+      {
+        "request": {
+          "body": {
+            "name": "Lublin main office",
+            "capacity": 99999
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "id": ".*",
+            "name": "Lublin main office",
+            "capacity": 99999
+          }
+        },
+        "description": "capacity value length equal to 5 digits - max value"
+      },
+      {
+        "request": {
+          "body": {
+            "name": "Lublin main office",
+            "capacity": 9999
+          }
+        },
+        "response": {
+          "code": 200,
+          "body": {
+            "id": ".*",
+            "name": "Lublin main office",
+            "capacity": 9999
+          }
+        },
+        "description": "capacity value length equal to 4 digits"
+      }
+
+    ]
+  },
+  "parking_configuration_without_capacity_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "capacity": "",
+            "name": "Lublin main office"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "capacity": "Capacity may not be null."
+          }
+        },
+        "description": "no capacity value"
+      },
+      {
+        "request": {
+          "body": {
+            "name": "Lublin main office"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "capacity": "Capacity may not be null."
+          }
+        },
+        "description": "no capacity value"
+      }
+
+    ]
+  },
+  "parking_configuration_without_name_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "capacity": 10
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "name": "Name may not be null."
+          }
+        },
+        "description": "no capacity value"
+      },
+      {
+        "request": {
+          "body": {
+            "name": "",
+            "capacity": 10
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "name": "Name may not be null."
+          }
+        },
+        "description": "no capacity value"
+      }
+
+    ]
+  },
+  "parking_configuration_with_capacity_not_as_a_number_value_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "name": "Lublin main office",
+            "capacity": ""
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "capacity": "Capacity may not be null."
+          }
+        },
+        "description": "capacity value as an empty string"
+      },
+      {
+        "request": {
+          "body": {
+            "name": "Lublin main office",
+            "capacity": "zz"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "JSONSyntaxError": "Wrong JSON format."
+          }
+        },
+        "description": "capacity value as a string"
+      },
+      {
+        "request": {
+          "body": {
+            "name": "Lublin main office",
+            "capacity": "20zz"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "JSONSyntaxError": "Wrong JSON format."
+          }
+        },
+        "description": "capacity value as a string which starts with a number"
+      }
+
+    ]
+  },
+  "parking_configuration_with_capacity_too_long_length_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "name": "Lublin main office",
+            "capacity": 12345678
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "capacity": "Capacity size must be lower than 100000."
+          }
+        },
+        "description": "capacity value too large"
+      }
+
+    ]
+  },
+  "parking_configuration_with_capacity_too_long_not_numerical_length_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "name": "Lublin main office",
+            "capacity": "qwertyui"
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "JSONSyntaxError": "Wrong JSON format."
+          }
+        },
+        "description": "capacity value length too long"
+      }
+
+    ]
+  },
+  "parking_configuration_with_name_too_long_length_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "name": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwerty",
+            "capacity": 100
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "name": "Name size must be lower than 100."
+          }
+        },
+        "description": "name length too long"
+      }
+
+    ]
+  },
+  "parking_configuration_with_incorrect_boundary_values_failure": {
+    "data": [
+      {
+        "request": {
+          "body": {
+            "name": "Qwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwertyqwert",
+            "capacity": 100
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "name": "Name size must be lower than 100."
+          }
+        },
+        "description": "name length equal to 101 characters"
+      },
+      {
+        "request": {
+          "body": {
+            "name": "Lublin main office",
+            "capacity": 123456
+          }
+        },
+        "response": {
+          "code": 400,
+          "body": {
+            "capacity": "Capacity size must be lower than 100000."
+          }
+        },
+        "description": "capacity length equal to 6 digits"
+      }
+
+    ]
+  }
+}
